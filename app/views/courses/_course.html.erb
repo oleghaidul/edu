@@ -1,0 +1,26 @@
+<tr>
+  <td><%= link_to "Preview", "#myModalCourse", :"data-toggle" => "modal" %></td>
+  <td><%= link_to_if user_signed_in?, course.name, course %></td>
+  <td><%= link_to truncate(course.description, :length => 30), "#", :title => "#{course.description}", :rel=>"tooltip" %></td>
+  <td><%= course.total_time %></td>
+  <td></td>
+  <% if current_user && current_user.courses.include?(course) %>
+    <td><%= link_to "Remove course", user_course_path(:id => course), :class => "btn btn-danger", :method => :delete, :confirm => "Are you sure?" %></td>
+  <% elsif current_user %>
+    <td><%= link_to "Add course", user_courses_path(:id => course), :class => "btn btn-success", :method => :post %></td>
+  <% end %>
+</tr>
+
+
+<div class="modal fade" id="myModalCourse">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3><%= link_to course.name, course %></h3>
+  </div>
+  <div class="modal-body">
+    <%= course.content %>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+  </div>
+</div>

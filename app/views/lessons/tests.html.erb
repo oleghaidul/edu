@@ -1,0 +1,22 @@
+<div class="well">lesson info</div>
+<ul class="nav nav-tabs">
+  <li class="<%= action_name == "show" ? "active" : "" %>"><%= link_to "Content", [@course, @lesson] %></li>
+  <li class="<%= action_name == "videos" ? "active" : "" %>"><%= link_to "Videos", videos_course_lesson_path(@course, @lesson) %></li>
+  <li class="<%= action_name == "documents" ? "active" : "" %>"><%= link_to "Documents", documents_course_lesson_path(@course, @lesson) %></li>
+  <li class="<%= action_name == "tests" ? "active" : "" %>"><%= link_to "Tests", tests_course_lesson_path(@course, @lesson) %></li>
+</ul>
+<%= content_for :sidebar do %>
+  <div class="span3">
+    <ul class="nav nav-list">
+      <li class="nav-header">
+        Lessons
+      </li>
+      <% @course.lessons.each do |lesson| %>
+        <li class="tab_link <%= "active" if lesson == @lesson %>"><%= link_to lesson.name, [@course, lesson] %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="lesson">
+  <%= render @lesson.testings %>
+</div>
