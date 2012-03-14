@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120305160907) do
+ActiveRecord::Schema.define(:version => 20120313170839) do
 
   create_table "answers", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20120305160907) do
     t.text     "body"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.boolean  "correct"
+    t.integer  "number"
   end
 
   create_table "categories", :force => true do |t|
@@ -90,6 +92,23 @@ ActiveRecord::Schema.define(:version => 20120305160907) do
     t.integer  "lesson_id"
     t.boolean  "passed"
     t.integer  "percent"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_questions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.boolean  "correct"
+    t.integer  "answer_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "user_testings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "testing_id"
+    t.boolean  "passed"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

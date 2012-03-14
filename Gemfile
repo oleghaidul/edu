@@ -26,6 +26,7 @@ gem "devise", ">= 2.0.4"
 gem 'simple_form'
 gem "simple-navigation"
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+gem 'bootstrap_forms'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

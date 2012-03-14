@@ -1,10 +1,6 @@
 Diplom::Application.routes.draw do
 
-  get "testings/show"
-
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-
-  get "lessons/show"
 
   devise_for :users
 
@@ -12,6 +8,12 @@ Diplom::Application.routes.draw do
 
   resources :courses, :only => [:index, :show] do
     resources :lessons, :only => [:index, :show] do
+      resources :testings do
+        member do
+          get :next
+          get :results
+        end
+      end
       member do
         get :videos
         get :documents
@@ -22,7 +24,7 @@ Diplom::Application.routes.draw do
 
   resources :user_courses
 
-  resources :categories, :testings
+  resources :categories
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
