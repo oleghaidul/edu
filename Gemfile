@@ -7,6 +7,7 @@ gem 'rails', '3.2.2'
 
 gem 'mysql2'
 gem 'pg'
+gem "cancan"
 
 
 # Gems used only for assets and not required
@@ -22,7 +23,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.0'
 gem "devise", ">= 2.0.4"
 gem 'simple_form'
 gem "simple-navigation"

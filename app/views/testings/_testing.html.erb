@@ -1,3 +1,9 @@
+<% if current_user.user_testings.where(:testing_id => testing.id).first.try(:passed?) %>
   <li class="span3">
-      <%= link_to content_tag(:div, testing.name, :class => "hero-unit"), [@course, @lesson, testing] %>
+    <%= content_tag(:div, testing.name, :class => "hero-unit") %>
   </li>
+<% else %>
+  <li class="span3">
+    <%= link_to content_tag(:div, testing.name, :class => "hero-unit"), [@course, @lesson, testing] %>
+  </li>
+<% end %>

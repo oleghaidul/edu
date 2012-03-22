@@ -1,0 +1,37 @@
+<% if @courses.any? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Total time</th>
+        <th>Difficulty</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @courses.each do |course| %>
+        <tr>
+          <td><%= link_to course.name, course %></td>
+          <td><%= link_to course.category.name, course.category if course.category %></td>
+          <td><%= course.total_time %></td>
+          <td></td>
+          <% if current_user && current_user.courses.include?(course) %>
+            <td><%= link_to "Remove course", user_course_path(:id => course), :class => "btn btn-danger", :method => :delete, :confirm => "Are you sure?" %></td>
+          <% elsif current_user %>
+            <td><%= link_to "Add course", user_courses_path(:id => course), :class => "btn btn-success", :method => :post %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  No courses found
+<% end %>
+
+<%= content_for :sidebar do %>
+  <div class="span3">
+    <ul class="nav nav-list">
+      Asdf
+    </ul>
+  </div>
+<% end %>

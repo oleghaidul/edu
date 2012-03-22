@@ -51,6 +51,7 @@ GEM
     bootstrap-sass (2.0.1)
     bootstrap_forms (1.0.5)
     builder (3.0.0)
+    cancan (1.6.7)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -164,9 +165,10 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap_forms
+  cancan
   coffee-rails (~> 3.2.1)
   devise (>= 2.0.4)
-  jquery-rails
+  jquery-rails (~> 2.0)
   mysql2
   pg
   rails (= 3.2.2)

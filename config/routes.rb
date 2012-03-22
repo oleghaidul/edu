@@ -24,7 +24,7 @@ Diplom::Application.routes.draw do
 
   resources :user_courses
 
-  resources :categories
+  resources :categories, :study_rooms, :statistics
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
