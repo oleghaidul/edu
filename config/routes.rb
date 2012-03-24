@@ -1,5 +1,7 @@
 Diplom::Application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users
@@ -24,7 +26,25 @@ Diplom::Application.routes.draw do
 
   resources :user_courses
 
-  resources :categories
+  resources :categories, :study_rooms
+
+  resources :statistics do
+    member do
+      get :courses
+      get :testings
+      get :questions
+    end
+  end
+
+  resources :videos do
+    member do
+      post :add_comment
+    end     
+    new do
+       post :upload
+       get  :save_video
+     end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

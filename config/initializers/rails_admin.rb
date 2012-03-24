@@ -3,6 +3,7 @@
 
 RailsAdmin.config do |config|
 
+  config.authorize_with :cancan
   # If your default_local is different from :en, uncomment the following 2 lines and set your default locale here:
   # require 'i18n'
   # I18n.default_locale = :de
@@ -10,7 +11,7 @@ RailsAdmin.config do |config|
   config.current_user_method { current_user } # auto-generated
 
   # If you want to track changes on your models:
-  # config.audit_with :history, User
+  config.audit_with :history, User
 
   # Or with a PaperTrail: (you need to install it first)
   # config.audit_with :paper_trail, User

@@ -13,11 +13,11 @@ class TestingsController < ApplicationController
     current_user.user_questions.create(:question_id => @answer.question.id, 
                                       :answer_id => params[:answer_id],
                                       :correct => @correct)
-    if @question
+    if @question 
       render :show
     else
       current_user.user_testings.create(:testing_id => @testing.id, :passed => true)
-      redirect_to [:results, @course, @lesson, @testing], idd: 10, notice: "Test was successfully finished"
+      redirect_to [:results, @course, @lesson, @testing], notice: "Test was successfully finished"
     end
   end
 

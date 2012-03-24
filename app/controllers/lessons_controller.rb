@@ -6,11 +6,11 @@ class LessonsController < ApplicationController
   end
 
   def videos
-    render :show
+    @videos = @lesson.videos
   end
 
   def documents
-    render :show
+    @documents = @lesson.documents
   end
 
   def tests

@@ -7,6 +7,10 @@ gem 'rails', '3.2.2'
 
 gem 'mysql2'
 gem 'pg'
+gem "cancan"
+gem "ckeditor", "~> 3.7.0.rc3"
+gem "carrierwave"
+gem "mini_magick"
 
 
 # Gems used only for assets and not required
@@ -22,12 +26,14 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.0'
 gem "devise", ">= 2.0.4"
 gem 'simple_form'
 gem "simple-navigation"
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'bootstrap_forms'
+gem 'youtube_it'
+gem 'inherited_resources'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

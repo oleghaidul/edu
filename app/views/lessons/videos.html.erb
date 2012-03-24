@@ -1,0 +1,15 @@
+<%= render @lesson %>
+<%= render @videos %>
+
+<%= content_for :sidebar do %>
+  <div class="span3">
+    <ul class="nav nav-list">
+      <li class="nav-header">
+        Lessons
+      </li>
+      <% @course.lessons.each do |lesson| %>
+        <li class="tab_link <%= "active" if lesson == @lesson %>"><%= link_to lesson.name, [@course, lesson] %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

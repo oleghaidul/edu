@@ -1,4 +1,7 @@
 <%= render @lesson %>
+
+<%= @lesson.content.try(:html_safe) %>
+
 <%= content_for :sidebar do %>
   <div class="span3">
     <ul class="nav nav-list">

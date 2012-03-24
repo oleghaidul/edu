@@ -3,6 +3,8 @@ class Lesson < ActiveRecord::Base
   has_many :user_lessons
   has_many :users, :through => :user_lessons
   has_many :testings
+  has_many :videos
+  has_many :documents
 
   def next
     course.lessons.where("id > ?", id).first
