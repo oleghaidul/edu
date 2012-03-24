@@ -1,0 +1,6 @@
+[1m[37m      invoke[0m  active_record
+[1m[32m      create[0m    db/migrate/20120324082334_create_videos.rb
+[1m[32m      create[0m    app/models/video.rb
+[1m[37m      invoke[0m    test_unit
+[1m[32m      create[0m      test/unit/video_test.rb
+[1m[32m      create[0m      test/fixtures/videos.yml
