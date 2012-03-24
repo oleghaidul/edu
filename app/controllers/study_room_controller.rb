@@ -1,0 +1,2 @@
+class StudyRoomController < ApplicationController
+end
