@@ -11,6 +11,7 @@ gem "cancan"
 gem "ckeditor", "~> 3.7.0.rc3"
 gem "carrierwave"
 gem "mini_magick"
+gem 'breadcrumbs_on_rails'
 
 
 # Gems used only for assets and not required

@@ -3,7 +3,7 @@ class Question < ActiveRecord::Base
   has_many :answers
 
   has_many :user_questions
-  has_many :questions, :through => :user_questions
+  has_many :users, :through => :user_questions
 
   def next
     testing.questions.where("id > ?", id).first

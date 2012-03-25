@@ -27,7 +27,11 @@
           <% end %>
         </tr>
         <tr>
-          <td colspan="5"><div id="demo-<%= course.id %>" class="accordion-toggle collapse" style="height: 0px;"> <%= course.name %> </div></td>
+          <td colspan="5">
+            <div id="demo-<%= course.id %>" class="accordion-toggle collapse" style="height: 0px;">
+              <%= render "courses", :course => course %> 
+            </div>
+          </td>
         </tr>
         
       <% end %>

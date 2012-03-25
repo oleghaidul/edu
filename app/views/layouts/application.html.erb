@@ -87,6 +87,7 @@
           <%= yield :sidebar %>
         <% end %>
         <div class="span7">
+          <%= render_breadcrumbs :separator => ' / ' %>
           <%= yield %>
         </div>
       </div><!--/row-->

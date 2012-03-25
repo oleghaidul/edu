@@ -12,11 +12,23 @@ class TestingsController < ApplicationController
     @question = @answer.question.next
     current_user.user_questions.create(:question_id => @answer.question.id, 
                                       :answer_id => params[:answer_id],
-                                      :correct => @correct)
+                                      :correct => @correct,
+                                      :testing_id => @testing.id)
+    cur_test = current_user.user_questions.where(:testing_id => @testing.id)
+    procent = cur_test.where(:correct => true).count * 100 / cur_test.count
+    if procent > 80
+      passed = true
+    else
+      passed = false
+    end
+
     if @question 
       render :show
     else
-      current_user.user_testings.create(:testing_id => @testing.id, :passed => true)
+      current_user.user_testings.create(:testing_id => @testing.id, 
+                                        :passed => passed, 
+                                        :course_id => @course.id,
+                                        :procent => procent)
       redirect_to [:results, @course, @lesson, @testing], notice: "Test was successfully finished"
     end
   end

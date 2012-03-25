@@ -1,0 +1,76 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Test name</th>
+      <th>Passed?</th>
+      <th>Right Questions</th>
+      <th>Wrong Questions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% course.user_testings.each do |t| %>
+      <tr>
+        <td><%= t.testing.name %></td>
+        <td><%= t.passed? %></td>
+        <td><%= link_to current_user.user_questions.where(:testing_id => t.testing, :correct => true).count, "#rightQuestions", :"data-toggle" => "modal" %></td>
+        <td><%= link_to current_user.user_questions.where(:testing_id => t.testing, :correct => false).count, "#wrongQuestions", :"data-toggle" => "modal" %></td>
+      </tr>
+
+      <div class="modal fade" id="rightQuestions">
+        <div class="modal-header">
+          <a class="close" data-dismiss="modal">×</a>
+          <h3>Right Questions</h3>
+        </div>
+        <div class="modal-body">
+          <% current_user.user_questions.where(:testing_id => t.testing, :correct => true).each do |q| %>
+            <h3><%= q.question.name %></h3>
+            <p>Note: <span class="label label-success">Right Answer</span></p>
+            <% q.question.answers.each do |a| %>
+              <% if q.answer_id == a.id && a.correct? %>
+                <p><span class="label label-success"><%= a.name %></span></p>
+              <% elsif q.answer_id == a.id && !a.correct? %>
+                <p><span class="label label-important"><%= a.name %></span></p>
+              <% elsif a.correct? %>
+                <p><span class="label label-success"><%= a.name %></span></p>
+              <% else %>
+                <p><span class="label"><%= a.name %></span></p>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn" data-dismiss="modal">Close</a>
+        </div>
+      </div>
+
+      <div class="modal fade" id="wrongQuestions">
+        <div class="modal-header">
+          <a class="close" data-dismiss="modal">×</a>
+          <h3>Right Questions</h3>
+        </div>
+        <div class="modal-body">
+          <% current_user.user_questions.where(:testing_id => t.testing, :correct => false).each do |q| %>
+            <h3><%= q.question.name %></h3>
+            <p>Note: <span class="label label-success">Right Answer</span>
+                     <span class="label label-important">Your Answer</span></p>
+            <% q.question.answers.each do |a| %>
+              <% if q.answer_id == a.id && a.correct? %>
+                <p><span class="label label-success"><%= a.name %></span></p>
+              <% elsif q.answer_id == a.id && !a.correct? %>
+                <p><span class="label label-important"><%= a.name %></span></p>
+              <% elsif a.correct? %>
+                <p><span class="label label-success"><%= a.name %></span></p>
+              <% else %>
+                <p><span class="label"><%= a.name %></span></p>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn" data-dismiss="modal">Close</a>
+        </div>
+      </div>
+    <% end %>
+  </tbody>
+</table>
+
