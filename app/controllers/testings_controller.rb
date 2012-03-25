@@ -28,7 +28,17 @@ class TestingsController < ApplicationController
       current_user.user_testings.create(:testing_id => @testing.id, 
                                         :passed => passed, 
                                         :course_id => @course.id,
+                                        :lesson_id => @lesson.id,
                                         :procent => procent)
+      u_tests = current_user.user_testings.where(:lesson_id => @lesson.id)
+      if u_tests.where(:passed => true).count == u_tests.count
+        lesson_passed = true
+      else
+        lesson_passed = false
+      end
+      current_user.user_lessons.create(:lesson_id => @lesson.id, 
+                                       :course_id => @course.id,
+                                       :passed => lesson_passed)
       redirect_to [:results, @course, @lesson, @testing], notice: "Test was successfully finished"
     end
   end
@@ -40,6 +50,10 @@ class TestingsController < ApplicationController
     @course = Course.find(params[:course_id])
     @lesson = Lesson.find(params[:lesson_id])
     @testing = Testing.find(params[:id])
+    add_breadcrumb @course.category.name, category_path(@course.category)
+    add_breadcrumb @course.name, course_path(@course)
+    add_breadcrumb @lesson.name, course_lesson_path(@course, @lesson)
+    add_breadcrumb @testing.name, tests_course_lesson_path(@course, @lesson)
   end
 
 end

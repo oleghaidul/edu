@@ -24,7 +24,6 @@
         <div class="modal-body">
           <% current_user.user_questions.where(:testing_id => t.testing, :correct => true).each do |q| %>
             <h3><%= q.question.name %></h3>
-            <p>Note: <span class="label label-success">Right Answer</span></p>
             <% q.question.answers.each do |a| %>
               <% if q.answer_id == a.id && a.correct? %>
                 <p><span class="label label-success"><%= a.name %></span></p>

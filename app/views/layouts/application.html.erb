@@ -64,15 +64,7 @@
     <%= render "layouts/modal_account" %>
 
     <ul class="breadcrumb">
-      <li>
-        <a href="#">Home</a> <span class="divider">/</span>
-      </li>
-      <li>
-        <a href="#">Library</a> <span class="divider">/</span>
-      </li>
-      <li class="active">
-        <a href="#">Data</a>
-      </li>
+      <%= render_breadcrumbs :separator => ' / ' %>
     </ul>
 
     <div class="container-fluid">
@@ -87,7 +79,6 @@
           <%= yield :sidebar %>
         <% end %>
         <div class="span7">
-          <%= render_breadcrumbs :separator => ' / ' %>
           <%= yield %>
         </div>
       </div><!--/row-->

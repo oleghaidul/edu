@@ -7,4 +7,6 @@ class Course < ActiveRecord::Base
 
 	has_many :user_testings
 	has_many :testings, :through => :user_testings
+
+	has_many :user_lessons
 end

@@ -1,0 +1,24 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Lessons</th>
+      <th>Passed?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% course.user_lessons.each do |l| %>
+      <tr>
+        <td><%= link_to l.lesson.name, "#demo-#{l.lesson.id}", :"data-toggle" => "collapse" %></td>
+        <td><%= l.passed? %></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <div id="demo-<%= l.lesson.id %>" class="accordion-toggle collapse" style="height: 0px;">
+            <%= render "courses", :course => course %> 
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

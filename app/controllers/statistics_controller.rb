@@ -1,8 +1,10 @@
 class StatisticsController < ApplicationController
   before_filter :authenticate_user!
+  add_breadcrumb "Home", :root_path
 
   def index
     @courses = current_user.courses
+    add_breadcrumb "Statistics", statistics_path
   end
 
   def courses
