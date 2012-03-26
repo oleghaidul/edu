@@ -1,17 +1,24 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Total time</th>
-      <th>Difficulty</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render @category.courses %>
-  </tbody>
-</table>
+<% if @category.courses.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Total time</th>
+        <th>Difficulty</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @category.courses %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-info">
+    <a class="close" data-dismiss="alert">×</a>
+    No courses found in this category
+  </div>
+<% end %>
 
 <%= content_for :sidebar do %>
   <div class="span3">

@@ -1,4 +1,14 @@
-<div class="well">lesson</div>
+<div class="well">
+  <h2><%= @course.name %></h2>
+  <p>Total time: <%= @course.total_time %></p>
+  <p>
+    <% if current_user && current_user.courses.include?(@course) %>
+    <td><%= link_to "<i class='icon-remove'></i> Unsubscribe".html_safe, user_course_path(:id => @course), :class => "btn btn-danger", :method => :delete, :confirm => "Are you sure?" %></td>
+  <% elsif current_user %>
+    <td><%= link_to "<i class='icon-ok'></i> Subscribe".html_safe, user_courses_path(:id => @course), :class => "btn btn-success", :method => :post %></td>
+  <% end %>
+  </p>
+</div>
 <ul class="nav nav-tabs">
   <li class="<%= action_name == "show" ? "active" : "" %>"><%= link_to "Content", [@course, lesson] %></li>
   <li class="<%= action_name == "videos" ? "active" : "" %>"><%= link_to "Videos", videos_course_lesson_path(@course, lesson) %></li>

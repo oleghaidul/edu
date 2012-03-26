@@ -16,8 +16,8 @@
         <p><b>url:</b> <a href="http://www.youtube.com/watch?v=<%= @video.yt_video_id %>&feature=youtube_it" target="_blank">http://www.youtube.com/watch?v=<%= @video.yt_video_id %></a></p>
 
       <div class="wat-cf">
-        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_video_path(@video), :class => "button" %> 
-        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), video_path(@video), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+        <%= link_to "Edit", edit_video_path(@video), :class => "button" %> 
+        <%= link_to "Delete", video_path(@video), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
       </div>      
     </div>
   </div>

@@ -39,7 +39,11 @@ class TestingsController < ApplicationController
       current_user.user_lessons.create(:lesson_id => @lesson.id, 
                                        :course_id => @course.id,
                                        :passed => lesson_passed)
-      redirect_to [:results, @course, @lesson, @testing], notice: "Test was successfully finished"
+      if current_user.user_lessons.where(:passed => true).count == @course.lessons.count
+        current_user.user_courses.where(:course_id => @course.id).first.update_attributes(:passed => true)
+      end
+      result_passed = passed ? "Passed" : "Failed"
+      redirect_to [:results, @course, @lesson, @testing], notice: "Test was finished. Result: #{result_passed}".html_safe
     end
   end
 

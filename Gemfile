@@ -12,7 +12,12 @@ gem "ckeditor", "~> 3.7.0.rc3"
 gem "carrierwave"
 gem "mini_magick"
 gem 'breadcrumbs_on_rails'
+gem 'sunspot_rails'
+gem 'progress_bar'
 
+group :development do
+  gem 'sunspot_solr'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.

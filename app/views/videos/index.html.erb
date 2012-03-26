@@ -29,9 +29,9 @@
             <%= video.created_at %>
           </td>
           <td class="last">
-            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", video_path(video) %> |
-            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_video_path(video) %> |
-            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", video_path(video), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+            <%= link_to "Show", video_path(video) %> |
+            <%= link_to "Edit", edit_video_path(video) %> |
+            <%= link_to "Delete", video_path(video), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
           </td>
         </tr>          
         <% end -%>

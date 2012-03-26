@@ -6,7 +6,7 @@ Diplom::Application.routes.draw do
 
   devise_for :users
 
-  root :to => 'home#index'
+  root :to => 'courses#index'
 
   resources :courses, :only => [:index, :show] do
     resources :lessons, :only => [:index, :show] do
@@ -23,6 +23,8 @@ Diplom::Application.routes.draw do
       end
     end
   end
+
+  match 'search' => 'courses#search', :as => :search
 
   resources :user_courses
 
