@@ -13,6 +13,10 @@ class Course < ActiveRecord::Base
   has_many :videos, :through => :lessons
   has_many :documents, :through => :lessons
 
+  scope :passed, where(:user_courses => { :passed => true })
+  scope :failed, where(:user_courses => { :passed => false })
+  scope :new_courses, where(:user_courses => { :passed => nil })
+
   searchable do
     text :name, :content, :description
     text :lessons do

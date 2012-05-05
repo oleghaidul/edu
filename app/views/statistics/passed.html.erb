@@ -1,0 +1,47 @@
+<%= content_for :sidebar do %>
+  <div class="span3">
+    <ul class="nav nav-list">
+      <li class="nav-header">
+        Statistics category
+        <li><%= link_to "Passed courses", [:passed, :statistics] %></li>
+        <li>Failed courses</li>
+        <li>New courses</li>
+      </li>
+    </ul>
+  </div>
+<% end %>
+
+<% if @courses.any? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Total time</th>
+        <th>Difficulty</th>
+        <th>Passed?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @courses.each do |course| %>
+        <tr>
+          <td><%= link_to course.name, "#demo-#{course.id}", :"data-toggle" => "collapse" %></td>
+          <td><%= link_to course.category.name, course.category if course.category %></td>
+          <td><%= course.total_time %></td>
+          <td></td>
+          <td><%= current_user.user_courses.where(:course_id => course).first.passed? %></td>
+        </tr>
+        <tr>
+          <td colspan="5">
+            <div id="demo-<%= course.id %>" class="accordion-toggle collapse" style="height: 0px;">
+              <%= render "lessons", :course => course %> 
+            </div>
+          </td>
+        </tr>
+        
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  No courses found
+<% end %>

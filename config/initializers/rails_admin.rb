@@ -80,6 +80,16 @@ RailsAdmin.config do |config|
 
   # All fields marked as 'hidden' won't be shown anywhere in the rails_admin unless you mark them as visible. (visible(true))
 
+  config.model Document do
+    edit do
+      field :name
+      field :body do
+        ckeditor { true }
+      end
+      field :lesson, :belongs_to_association   #   # Found columns:
+    end
+  end
+
   # config.model Answer do
   #   # Found associations:
   #     configure :question, :belongs_to_association   #   # Found columns:

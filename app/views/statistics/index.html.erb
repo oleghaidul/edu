@@ -16,7 +16,7 @@
           <td><%= link_to course.category.name, course.category if course.category %></td>
           <td><%= course.total_time %></td>
           <td></td>
-          <td><%= current_user.user_courses.where(:course_id => course).first.passed? %></td>
+          <td><%= current_user.user_courses.where(:course_id => course).first.passed %></td>
         </tr>
         <tr>
           <td colspan="5">
@@ -38,6 +38,9 @@
     <ul class="nav nav-list">
       <li class="nav-header">
         Statistics category
+        <li><%= link_to "Passed courses", [:passed, :statistics] %></li>
+        <li><%= link_to "Failed courses", [:failed, :statistics] %></li>
+        <li><%= link_to "New courses", [:new_courses, :statistics] %></li>
       </li>
     </ul>
   </div>

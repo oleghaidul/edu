@@ -1,12 +1,14 @@
 Diplom::Application.routes.draw do
 
+  get "documents/show"
+
   mount Ckeditor::Engine => '/ckeditor'
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users
 
-  root :to => 'courses#index'
+  root :to => 'home#index'
 
   resources :courses, :only => [:index, :show] do
     resources :lessons, :only => [:index, :show] do
@@ -24,6 +26,8 @@ Diplom::Application.routes.draw do
     end
   end
 
+  resources :documents, only: :show
+
   match 'search' => 'courses#search', :as => :search
 
   resources :user_courses
@@ -35,6 +39,11 @@ Diplom::Application.routes.draw do
       get :courses
       get :testings
       get :questions
+    end
+    collection do
+      get :passed
+      get :failed
+      get :new_courses
     end
   end
 

@@ -1,0 +1,10 @@
+<%= content_for :sidebar do %>
+  <div class="span3">
+    <div class="well sidebar-nav">
+      <ul class="nav nav-list">
+        <li><%= link_to "List", videos_path %></li>
+        <li><%= link_to "New", new_video_path %></li>
+      </ul>
+    </div>
+  </div>
+<% end %>

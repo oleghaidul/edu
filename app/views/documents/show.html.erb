@@ -1,0 +1,18 @@
+<h1><%= @document.name %></h1>
+
+<%= @document.body.html_safe %>
+
+<%= content_for :sidebar do %>
+  <div class="span3">
+    <div class="well sidebar-nav">
+      <ul class="nav nav-list">
+        <li class="nav-header">
+          Another documents for this lesson
+        </li>
+        <% @document.lesson.documents.each do |doc| %>
+          <li><%= link_to doc.name, doc %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
