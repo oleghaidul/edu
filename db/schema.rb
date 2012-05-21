@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120505145842) do
+ActiveRecord::Schema.define(:version => 20120513135320) do
 
   create_table "answers", :force => true do |t|
     t.string   "name"
@@ -93,6 +93,29 @@ ActiveRecord::Schema.define(:version => 20120505145842) do
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
+  create_table "student_group_courses", :force => true do |t|
+    t.integer  "student_group_id"
+    t.integer  "course_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "student_groups", :force => true do |t|
+    t.string   "name"
+    t.string   "group_type"
+    t.integer  "teacher_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "teachers", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "testings", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -115,8 +138,9 @@ ActiveRecord::Schema.define(:version => 20120505145842) do
     t.integer  "course_id"
     t.integer  "user_id"
     t.boolean  "passed"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "created_by_id"
   end
 
   create_table "user_lessons", :force => true do |t|

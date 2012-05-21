@@ -1,5 +1,12 @@
 class User < ActiveRecord::Base
 
+  has_many :assigned_user_courses, :class_name => 'UserCourse', :foreign_key => 'created_by_id', :inverse_of => :user_course
+  has_many :assigned_courses, :source => :assigned_user_course, :through => :assigned_user_courses
+
+  has_many :teachers
+
+  belongs_to :student_group
+
   has_many :user_courses
   has_many :courses, :through => :user_courses
 
@@ -18,5 +25,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :role
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :user_courses
 end

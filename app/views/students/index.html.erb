@@ -1,0 +1,15 @@
+<%= content_for :sidebar do %>
+  <div class="span3">
+    <ul class="nav nav-list">
+      <li class="nav-header">
+        Statistics category
+        <li><%= link_to "Students", '#' %></li>
+      </li>
+    </ul>
+  </div>
+<% end %>
+
+<% @students.each do |student| %>
+  <p><%= link_to student.email, teacher_student_path(@teacher.id, student.id) %></p>
+<% end %>
+

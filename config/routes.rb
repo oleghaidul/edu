@@ -1,5 +1,13 @@
 Diplom::Application.routes.draw do
 
+  get "student_groups/index"
+
+  get "student_groups/show"
+
+  get "students/index"
+
+  get "students/show"
+
   get "documents/show"
 
   mount Ckeditor::Engine => '/ckeditor'
@@ -28,11 +36,21 @@ Diplom::Application.routes.draw do
 
   resources :documents, only: :show
 
-  match 'search' => 'courses#search', :as => :search
+  resources :teachers do
+    resources :students, :student_groups, :courses
+  end
 
-  resources :user_courses
+  resources :user_courses do
+    collection do 
+      post :bulk
+    end
+  end
 
   resources :categories, :study_rooms
+
+  match 'search' => 'courses#search', :as => :search
+
+  
 
   resources :statistics do
     member do

@@ -1,0 +1,19 @@
+<%= content_for :sidebar do %>
+  <div class="span3">
+    <ul class="nav nav-list">
+      <li class="nav-header">
+        Statistics category
+        <li><%= link_to "Assign course", '#' %></li>
+      </li>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_tag bulk_user_courses_path, :method => :post do %>
+  <% @courses.each do |course| %>
+    <p><%= check_box_tag "course_ids[]", course.id %><%= course.name %></p>
+    <%= hidden_field_tag :student_id, @student.id %>
+
+  <% end %>
+  <%= submit_tag "add" %>
+<% end %>

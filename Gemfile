@@ -14,6 +14,10 @@ gem "mini_magick"
 gem 'breadcrumbs_on_rails'
 gem 'sunspot_rails'
 gem 'progress_bar'
+gem 'heroku'
+gem 'simple-navigation-bootstrap'
+gem 'simple-navigation'
+gem 'railroady'
 
 group :development do
   gem 'sunspot_solr'

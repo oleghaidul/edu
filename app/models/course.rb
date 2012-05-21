@@ -5,6 +5,9 @@ class Course < ActiveRecord::Base
 
   has_many :lessons, :dependent => :destroy
 
+  has_many :student_group_courses
+  has_many :student_groups, :through => :student_group_courses
+
   has_many :user_testings
   has_many :testings, :through => :user_testings
 
