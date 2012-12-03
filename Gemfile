@@ -45,6 +45,14 @@ gem 'bootstrap_forms'
 gem 'youtube_it'
 gem 'inherited_resources'
 
+group :production do
+  gem 'unicorn', :require => nil
+end
+
+group :development do
+  gem 'capistrano-deploy', :require => nil
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
